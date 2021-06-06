@@ -7,18 +7,18 @@ This repo makes throwaway emailadresses for your domain. Basically it works like
 
 The system works as follows:
 in the virtual table of postfix an entry is created like:
-'''
+```
 *postfix@domain.com  postfix-domain-com
 createmeanewemailaddress@domain.com createmeanewemailaddress-domain-com
-'''
+```
 Reload the virtual mailertable:
-'''
-makemap /etc/postfix/virtual
-'''
+`makemap /etc/postfix/virtual`
 
 Then create the aliases in /etc/aliases
+```
 createmeanewemailaddress-domain-com: "|/usr/local/bin/createnewaddress.py"
 postfix-domain-com: "|/usr/local/bin/forwardmail.py"
+```
 
 Obvisously run 'newaliases' after this.
 
